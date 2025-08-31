@@ -1,3 +1,38 @@
+// Loading Screen Animation
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const loadingLogo = document.getElementById('loading-logo');
+    const body = document.body;
+    
+    // Add loading class to body to prevent scrolling
+    body.classList.add('loading');
+    
+    // Start SVG draw animation immediately
+    if (loadingLogo) {
+        loadingLogo.classList.add('active');
+        
+        // After draw animation completes, start reverse animation
+        setTimeout(() => {
+            loadingLogo.classList.remove('active');
+            loadingLogo.classList.add('reverse');
+            
+            // After reverse completes, fade out the loading screen
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                body.classList.remove('loading');
+                
+                // Remove loading screen from DOM after fade out
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1900); // Wait for reverse to complete
+        }, 2200); // Wait for draw to complete + brief pause
+    }
+}
+
+// Initialize loading screen before DOM is ready
+initLoadingScreen();
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scrolling for navigation links

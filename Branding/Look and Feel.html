@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HadadaHealth Brand Style Guide Demo — Complete Edition</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-<link rel="shortcut icon" href="/favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+<link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg" />
+<link rel="shortcut icon" href="../favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="Hadada" />
-<link rel="manifest" href="/favicon/site.webmanifest" />
+<link rel="manifest" href="../favicon/site.webmanifest" />
 
 <style>
   /* =============================
@@ -806,6 +806,260 @@
     }
   }
 
+  /* Animations - Similar to index page */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Animation classes */
+  .animate-fade-up {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-left {
+    opacity: 0;
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-right {
+    opacity: 0;
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+  
+  .animate-scale {
+    opacity: 0;
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+  
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Staggered animation delays */
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+  
+  /* Enhanced hover effects */
+  .card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .swatch {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .swatch:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+  
+  /* Loading animations for elements */
+  .loading-placeholder {
+    background: linear-gradient(90deg, 
+      var(--color-surface) 25%, 
+      rgba(45,99,86,0.05) 50%, 
+      var(--color-surface) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Demo Loading Screens */
+  .demo-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+
+  .demo-loading-screen.show {
+    display: flex;
+    opacity: 1;
+  }
+
+  .demo-loading-content {
+    text-align: center;
+    color: white;
+  }
+
+  .demo-loading-content svg {
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .demo-loading-text h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+  }
+
+  .demo-loading-text p {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+
+  /* Data Loading Overlay */
+  .demo-data-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .demo-data-overlay.show {
+    display: flex;
+    opacity: 1;
+  }
+
+  .demo-data-content {
+    text-align: center;
+    background: var(--color-white);
+    padding: var(--space-8);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-modal);
+    min-width: 200px;
+  }
+
+  .demo-data-content svg {
+    margin-bottom: 1rem;
+  }
+
+  .demo-data-text {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Dark mode data loading */
+  [data-theme="dark"] .demo-data-content {
+    background: var(--color-white);
+    box-shadow: var(--shadow-modal);
+  }
+
+  [data-theme="dark"] .demo-data-content svg path {
+    stroke: white !important;
+  }
+
+  [data-theme="dark"] .demo-data-text {
+    color: var(--color-text);
+  }
+
+  /* SVG Animations for Demos */
+  .svg-elem-demo-page,
+  .svg-elem-demo-data {
+    stroke-dashoffset: 2912.817626953125px;
+    stroke-dasharray: 2912.817626953125px;
+  }
+
+  /* Page loading animation (draw + reverse) */
+  .demo-page-logo.animate .svg-elem-demo-page {
+    animation: pageDrawReverse 4s ease-in-out;
+  }
+
+  /* Data loading animation (draw + undraw single cycle) */
+  .demo-data-logo.animate .svg-elem-demo-data {
+    animation: dataDrawUndraw 4s ease-in-out;
+  }
+
+  @keyframes pageDrawReverse {
+    0% { stroke-dashoffset: 2912.817626953125px; }
+    47% { stroke-dashoffset: 0; }
+    53% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 2912.817626953125px; }
+  }
+
+  @keyframes dataDrawUndraw {
+    0% { stroke-dashoffset: 2912.817626953125px; }
+    47% { stroke-dashoffset: 0; }
+    53% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 2912.817626953125px; }
+  }
+
   /* Utility classes */
   .text-center { text-align: center; }
   .mb-4 { margin-bottom: var(--space-4); }
@@ -845,6 +1099,145 @@
     margin: var(--space-4) 0;
     font-size: 14px;
   }
+
+  /* Mobile Icon Showcase */
+  .mobile-icon-showcase {
+    text-align: center;
+    padding: var(--space-4);
+  }
+
+  .icon-container {
+    margin-bottom: var(--space-4);
+  }
+
+  .app-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 8px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(45, 99, 86, 0.25);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .app-icon:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(45, 99, 86, 0.3);
+  }
+
+  .app-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .app-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text);
+    letter-spacing: -0.025em;
+    margin-bottom: var(--space-3);
+  }
+
+  .icon-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-2);
+    margin: var(--space-3) 0;
+    font-size: 10px;
+  }
+
+  .spec-item {
+    text-align: center;
+    color: var(--color-text);
+  }
+
+  .spec-item strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1px;
+    color: var(--color-primary);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .icon-usage {
+    margin: var(--space-2) 0 0 0;
+    font-size: 10px;
+    color: var(--color-muted);
+  }
+
+  .icon-usage code {
+    background: rgba(45, 99, 86, 0.08);
+    color: var(--color-primary);
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 9px;
+  }
+
+  /* Footer styles */
+  .footer {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: var(--space-8);
+  }
+  .footer p {
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  /* Dark mode navigation styling */
+  [data-theme="dark"] .nav {
+    background: var(--color-white);
+    color: var(--color-text);
+  }
+  
+  [data-theme="dark"] .nav a {
+    color: var(--color-text);
+  }
+  
+  [data-theme="dark"] .nav a:hover {
+    color: var(--color-primary);
+  }
+  
+  [data-theme="dark"] .nav a.active {
+    color: var(--color-primary);
+  }
+  
+  [data-theme="dark"] .theme-toggle {
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+  
+  [data-theme="dark"] .theme-toggle:hover {
+    background: var(--color-border);
+    border-color: var(--color-muted);
+  }
+
+  /* Navigation link layout - vertical with centered icons */
+  .nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+  }
+  
+  .nav a .material-icons {
+    margin: 0;
+  }
+  
+  .nav a span {
+    font-size: 12px;
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -857,14 +1250,14 @@
       </svg>
     </div>
     <div style="margin-left:auto; display:flex; gap:16px; align-items: center;">
-      <a class="active" href="#colors"><i class="material-icons icon-16" style="margin-right: 6px;">palette</i>Colors</a>
-      <a href="#typography"><i class="material-icons icon-16" style="margin-right: 6px;">text_fields</i>Typography</a>
-      <a href="#buttons"><i class="material-icons icon-16" style="margin-right: 6px;">smart_button</i>Buttons</a>
-      <a href="#forms"><i class="material-icons icon-16" style="margin-right: 6px;">input</i>Forms</a>
-      <a href="#logo-examples"><i class="material-icons icon-16" style="margin-right: 6px;">image</i>Logos</a>
-      <a href="#iconography"><i class="material-icons icon-16" style="margin-right: 6px;">star</i>Icons</a>
-      <a href="#clinical"><i class="material-icons icon-16" style="margin-right: 6px;">medical_services</i>Clinical</a>
-      <a href="#wizard"><i class="material-icons icon-16" style="margin-right: 6px;">linear_scale</i>Wizard</a>
+      <a class="active" href="#colors"><i class="material-icons icon-16">palette</i><span>Colors</span></a>
+      <a href="#typography"><i class="material-icons icon-16">text_fields</i><span>Typography</span></a>
+      <a href="#buttons"><i class="material-icons icon-16">smart_button</i><span>Buttons</span></a>
+      <a href="#forms"><i class="material-icons icon-16">input</i><span>Forms</span></a>
+      <a href="#logo-examples"><i class="material-icons icon-16">image</i><span>Logos</span></a>
+      <a href="#iconography"><i class="material-icons icon-16">star</i><span>Icons</span></a>
+      <a href="#clinical"><i class="material-icons icon-16">medical_services</i><span>Clinical</span></a>
+      <a href="#wizard"><i class="material-icons icon-16">linear_scale</i><span>Wizard</span></a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
         <span class="theme-icon-container">
           <i class="material-icons theme-sun">light_mode</i>
@@ -886,11 +1279,11 @@
         <span>Type</span>
       </a>
       <a href="#" class="mobile-nav-link home-logo">
-        <svg viewBox="0 0 1000 1000" fill="none" class="logo-light">
+        <svg viewBox="0 0 1000 1000" fill="none" class="logo-light float-animation">
           <circle cx="500" cy="500" r="500" fill="#96364C"/>
           <path d="M873 366.183C854.864 291.315 788.969 189.88 639.648 166.937C531.436 -9.367 355.515 147.012 452.846 244.22C502.66 289.256 530.589 314.506 580.404 359.542C698.079 477.069 654.539 617.598 518.136 689.574M452.846 912V716.376C476.438 709.084 498.272 700.056 518.136 689.574M518.136 689.574V912M127 661.431C548.363 -6.34816 873 753.206 127 662.035M518.136 156.068V156.672" stroke="white" stroke-width="30" stroke-linecap="round"/>
         </svg>
-        <svg viewBox="0 0 1000 1000" fill="none" class="logo-dark">
+        <svg viewBox="0 0 1000 1000" fill="none" class="logo-dark float-animation">
           <circle cx="500" cy="500" r="500" fill="#2D6356"/>
           <path d="M873 366.183C854.864 291.315 788.969 189.88 639.648 166.937C531.436 -9.367 355.515 147.012 452.846 244.22C502.66 289.256 530.589 314.506 580.404 359.542C698.079 477 654.539 617.598 518.136 689.574M452.846 912V716.376C476.438 709.084 498.272 700.056 518.136 689.574M518.136 689.574V912M127 661.431C548.363 -6.34816 873 753.206 127 662.035M518.136 156.068V156.672" stroke="white" stroke-width="30" stroke-linecap="round"/>
         </svg>
@@ -909,14 +1302,14 @@
   </nav>
 
   <main class="container">
-    <h1>HadadaHealth Brand Style Guide</h1>
-    <p class="muted">Complete implementation of the HadadaHealth brand system for healthcare practice management. This demo shows all components, interactions, and design patterns as specified in the brand style guide.</p>
+    <h1 class="animate-fade-up">HadadaHealth Brand Style Guide</h1>
+    <p class="muted animate-fade-up animate-delay-200">Complete implementation of the HadadaHealth brand system for healthcare practice management. This demo shows all components, interactions, and design patterns as specified in the brand style guide.</p>
 
     <!-- Brand Overview Section -->
-    <section class="card mt-8">
+    <section class="card mt-8 animate-fade-up animate-delay-300">
       <h2>Brand Overview</h2>
       <div class="grid cols-3">
-        <div>
+        <div class="animate-slide-left animate-delay-400">
           <h3>Core Values</h3>
           <ul>
             <li><strong>Clinical accuracy:</strong> Evidence-based, clear, editable AI assistance</li>
@@ -925,7 +1318,7 @@
             <li><strong>Collaboration:</strong> Multi-disciplinary workflows</li>
           </ul>
         </div>
-        <div>
+        <div class="animate-fade-up animate-delay-500">
           <h3>Voice & Tone</h3>
           <ul>
             <li><strong>Professional:</strong> Clinical, precise, no slang</li>
@@ -934,7 +1327,7 @@
             <li><strong>Compliant:</strong> Avoid absolute medical claims</li>
           </ul>
         </div>
-        <div>
+        <div class="animate-slide-right animate-delay-400">
           <h3>Target Users</h3>
           <div class="discipline-tag" style="margin: 4px;">Physiotherapists</div>
           <div class="discipline-tag" style="margin: 4px;">Occupational Therapists</div>
@@ -1218,7 +1611,7 @@
     <!-- Logo Integration Examples -->
     <section id="logo-examples" class="mt-8">
       <h2>Logo Integration Examples</h2>
-      <div class="grid cols-2">
+      <div class="grid cols-2" style="margin-bottom: var(--space-8);">
         <div class="card">
           <h3>Clinical Document Header</h3>
           <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); background: var(--color-white);">
@@ -1236,44 +1629,44 @@
         </div>
         
         <div class="card">
-          <h3>Loading Screen</h3>
-          <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-8); background: var(--color-primary); text-align: center;">
-            <svg viewBox="0 0 776 855" fill="none" style="width: 48px; height: 56px; margin-bottom: 16px;">
-              <path d="M761 294.183C742.864 219.315 676.969 117.88 527.648 94.9365C419.436 -81.367 243.515 75.0117 340.846 172.22C390.66 217.256 418.589 242.506 468.404 287.542C586.079 405.069 542.539 545.598 406.136 617.574M340.846 840V644.376C364.438 637.084 386.272 628.056 406.136 617.574M406.136 617.574V840M15 589.431C436.363 -78.3482 761 681.206 15 590.035M406.136 84.0684V84.6722" stroke="white" stroke-width="30" stroke-linecap="round"/>
-            </svg>
-            <p style="margin: 0; color: white; font-size: 14px; font-weight: 500;">Loading...</p>
-            <p style="margin: 8px 0 0 0; font-size: 12px; color: rgba(255,255,255,0.8);">Uses: <code>Monogram White.svg</code></p>
+          <h3>Email Signature</h3>
+          <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); background: var(--color-white); font-size: 13px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+              <img src="Wordmark Green.svg" alt="Hadada Health" style="width: 80px; height: auto;">
+            </div>
+            <p style="margin: 0; font-weight: 500;">Dr. Sarah Johnson</p>
+            <p style="margin: 2px 0; color: var(--color-muted);">Physiotherapist</p>
+            <p style="margin: 8px 0 0 0; font-size: 11px; color: var(--color-muted);">Uses: <code>Wordmark Green.svg</code></p>
           </div>
         </div>
       </div>
       
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Email Signature</h3>
-          <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); background: var(--color-white); font-size: 13px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-              <svg viewBox="0 0 2928 251" fill="none" style="width: 80px; height: auto;">
-                <path d="M203.2 0.225V251H169.25V136.9H33.975V251H0.025V0.225H33.975V112.05H169.25V0.225H203.2Z" fill="#2D6356"/>
-                <text x="220" y="180" fill="#2D6356" font-size="180" font-family="Arial, sans-serif">ADADA</text>
-                <text x="220" y="240" fill="#2D6356" font-size="60" font-family="Arial, sans-serif">HEALTH</text>
-              </svg>
-            </div>
-            <p style="margin: 0; font-weight: 500;">Dr. Sarah Johnson</p>
-            <p style="margin: 2px 0; color: var(--color-muted);">Physiotherapist</p>
-            <p style="margin: 8px 0 0 0; font-size: 11px; color: var(--color-muted);">Uses: <code>Text Green.svg</code></p>
-          </div>
-        </div>
+      <div class="grid cols-2">
         
         <div class="card">
           <h3>Mobile App Icon</h3>
-          <div style="text-align: center; padding: var(--space-4);">
-            <div style="width: 64px; height: 64px; margin: 0 auto 12px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-              <svg viewBox="0 0 999 999" fill="none" style="width: 100%; height: 100%;">
-                <rect width="999" height="999" rx="200" fill="#2D6356"/>
-                <path d="M873 366.183C854.864 291.315 788.969 189.88 639.648 166.937C531.436 -9.367 355.515 147.012 452.846 244.22C502.66 289.256 530.589 314.506 580.404 359.542C698.079 477.069 654.539 617.598 518.136 689.574M452.846 912V716.376C476.438 709.084 498.272 700.056 518.136 689.574M518.136 689.574V912M127 661.431C548.363 -6.34816 873 753.206 127 662.035M518.136 156.068V156.672" stroke="white" stroke-width="30" stroke-linecap="round"/>
-              </svg>
+          <div class="mobile-icon-showcase">
+            <div class="icon-container">
+              <div class="app-icon">
+                <svg viewBox="0 0 999 999" fill="none">
+                  <rect width="999" height="999" rx="200" fill="#2D6356"/>
+                  <path d="M873 366.183C854.864 291.315 788.969 189.88 639.648 166.937C531.436 -9.367 355.515 147.012 452.846 244.22C502.66 289.256 530.589 314.506 580.404 359.542C698.079 477.069 654.539 617.598 518.136 689.574M452.846 912V716.376C476.438 709.084 498.272 700.056 518.136 689.574M518.136 689.574V912M127 661.431C548.363 -6.34816 873 753.206 127 662.035M518.136 156.068V156.672" stroke="white" stroke-width="30" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="app-name">HadadaHealth</div>
             </div>
-            <p style="margin: 0; font-size: 11px; color: var(--color-muted);">Uses: <code>Mobile Icon.svg</code></p>
+            <div class="icon-specs">
+              <div class="spec-item">
+                <strong>Size:</strong> 512x512px
+              </div>
+              <div class="spec-item">
+                <strong>Format:</strong> SVG/PNG
+              </div>
+              <div class="spec-item">
+                <strong>Radius:</strong> 20% (iOS style)
+              </div>
+            </div>
+            <p class="icon-usage">Uses: <code>Mobile Icon.svg</code></p>
           </div>
         </div>
         
@@ -1397,6 +1790,63 @@
         </div>
       </div>
     </section>
+
+    <!-- Loading States Section -->
+    <section id="loading-states" class="mt-8">
+      <h2>Loading States</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Page Loading (Login Screen)</h3>
+          <p>Full-screen gradient background with logo draw/undraw animation - used for initial app loading and login screens.</p>
+          <button class="btn btn-primary" id="demo-page-loading">
+            <i class="material-icons icon-20" style="margin-right: 8px;">refresh</i>
+            Demo Page Loading
+          </button>
+        </div>
+        
+        <div class="card">
+          <h3>Data Loading (Blur Overlay)</h3>
+          <p>Blur overlay with centered logo animation - used for page transitions, saving data, and loading content.</p>
+          <button class="btn btn-secondary" id="demo-data-loading">
+            <i class="material-icons icon-20" style="margin-right: 8px;">hourglass_empty</i>
+            Demo Data Loading
+          </button>
+        </div>
+      </div>
+      
+      <div class="card mt-8">
+        <h3>Loading State Rules</h3>
+        <div class="grid cols-3">
+          <div>
+            <h4>Page Loading</h4>
+            <ul style="font-size: 14px;">
+              <li>Full-screen gradient overlay</li>
+              <li>White logo on colored background</li>
+              <li>Draw + undraw animation sequence</li>
+              <li>Used for: Login, app initialization</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Data Loading</h4>
+            <ul style="font-size: 14px;">
+              <li>Blur background overlay</li>
+              <li>Logo color adapts to theme</li>
+              <li>Draw + undraw animation (looped)</li>
+              <li>Used for: Saving, API calls, transitions</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Theme Adaptation</h4>
+            <ul style="font-size: 14px;">
+              <li><strong>Light mode:</strong> Green logo (#2D6356)</li>
+              <li><strong>Dark mode:</strong> White logo</li>
+              <li>Maintains brand consistency</li>
+              <li>Ensures proper contrast</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Modal Example -->
@@ -1418,6 +1868,29 @@
         <button class="btn btn-secondary" id="closeModalBtn">Cancel</button>
         <button class="btn btn-primary">Save Documentation</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Page Loading Screen (Login Style) -->
+  <div id="demo-page-loading-screen" class="demo-loading-screen">
+    <div class="demo-loading-content">
+      <svg width="120" height="140" viewBox="0 0 776 855" fill="none" xmlns="http://www.w3.org/2000/svg" class="demo-page-logo">
+        <path d="M761 294.183C742.864 219.315 676.969 117.88 527.648 94.9365C419.436 -81.367 243.515 75.0117 340.846 172.22C390.66 217.256 418.589 242.506 468.404 287.542C586.079 405.069 542.539 545.598 406.136 617.574M340.846 840V644.375C364.438 637.084 386.272 628.056 406.136 617.574M406.136 617.574V840M15 589.431C436.363 -78.3481 761 681.206 15 590.035M406.136 84.0684V84.6722" stroke="white" stroke-width="30" stroke-linecap="round" class="svg-elem-demo-page"></path>
+      </svg>
+      <div class="demo-loading-text">
+        <h3>HadadaHealth</h3>
+        <p>Loading login screen...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Loading Overlay (Blur Style) -->
+  <div id="demo-data-loading-overlay" class="demo-data-overlay">
+    <div class="demo-data-content">
+      <svg width="80" height="94" viewBox="0 0 776 855" fill="none" xmlns="http://www.w3.org/2000/svg" class="demo-data-logo">
+        <path d="M761 294.183C742.864 219.315 676.969 117.88 527.648 94.9365C419.436 -81.367 243.515 75.0117 340.846 172.22C390.66 217.256 418.589 242.506 468.404 287.542C586.079 405.069 542.539 545.598 406.136 617.574M340.846 840V644.375C364.438 637.084 386.272 628.056 406.136 617.574M406.136 617.574V840M15 589.431C436.363 -78.3481 761 681.206 15 590.035M406.136 84.0684V84.6722" stroke="#2D6356" stroke-width="30" stroke-linecap="round" class="svg-elem-demo-data"></path>
+      </svg>
+      <p class="demo-data-text">Saving patient data...</p>
     </div>
   </div>
 
@@ -1572,6 +2045,188 @@
   
   // Initialize theme toggle
   document.addEventListener('DOMContentLoaded', initThemeToggle);
+
+  // Scroll-triggered animations (similar to index page)
+  function initScrollAnimations() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add stagger delay to child elements
+          const children = entry.target.querySelectorAll('.animate-fade-up:not([style*="animation-play-state"]), .animate-slide-left:not([style*="animation-play-state"]), .animate-slide-right:not([style*="animation-play-state"]), .animate-scale:not([style*="animation-play-state"])');
+          
+          children.forEach((child, index) => {
+            setTimeout(() => {
+              child.style.animationPlayState = 'running';
+              child.style.opacity = '1';
+            }, index * 100);
+          });
+
+          // Trigger main element animation
+          if (entry.target.classList.contains('animate-fade-up') || 
+              entry.target.classList.contains('animate-slide-left') || 
+              entry.target.classList.contains('animate-slide-right') || 
+              entry.target.classList.contains('animate-scale')) {
+            entry.target.style.animationPlayState = 'running';
+            entry.target.style.opacity = '1';
+          }
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.animate-fade-up, .animate-slide-left, .animate-slide-right, .animate-scale').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  }
+
+  // Enhanced card hover effects with stagger
+  function initEnhancedInteractions() {
+    const cards = document.querySelectorAll('.card');
+    const swatches = document.querySelectorAll('.swatch');
+    
+    // Add subtle bounce effect to cards on hover
+    cards.forEach((card, index) => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+    });
+
+    // Add color pulse effect to swatches
+    swatches.forEach(swatch => {
+      const chip = swatch.querySelector('.chip');
+      if (chip) {
+        swatch.addEventListener('mouseenter', () => {
+          chip.style.filter = 'brightness(1.1) saturate(1.2)';
+          chip.style.transform = 'scale(1.05)';
+        });
+        
+        swatch.addEventListener('mouseleave', () => {
+          chip.style.filter = 'brightness(1) saturate(1)';
+          chip.style.transform = 'scale(1)';
+        });
+      }
+    });
+  }
+
+  // Button ripple effect
+  function initButtonEffects() {
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.height, rect.width);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          pointer-events: none;
+          animation: ripple 0.6s linear;
+        `;
+        
+        if (this.style.position !== 'absolute' && this.style.position !== 'relative') {
+          this.style.position = 'relative';
+        }
+        
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+  }
+
+  // Add ripple keyframes
+  if (!document.querySelector('#ripple-styles')) {
+    const style = document.createElement('style');
+    style.id = 'ripple-styles';
+    style.textContent = `
+      @keyframes ripple {
+        0% {
+          opacity: 1;
+          transform: scale(0);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Demo Loading States
+  function initLoadingDemos() {
+    const pageLoadingBtn = document.getElementById('demo-page-loading');
+    const dataLoadingBtn = document.getElementById('demo-data-loading');
+    const pageLoadingScreen = document.getElementById('demo-page-loading-screen');
+    const dataLoadingOverlay = document.getElementById('demo-data-loading-overlay');
+
+    // Page Loading Demo
+    pageLoadingBtn?.addEventListener('click', () => {
+      const pageLogo = document.querySelector('.demo-page-logo');
+      
+      // Show loading screen
+      pageLoadingScreen.classList.add('show');
+      
+      // Start logo animation
+      pageLogo.classList.add('animate');
+      
+      // Hide after animation completes
+      setTimeout(() => {
+        pageLoadingScreen.classList.remove('show');
+        pageLogo.classList.remove('animate');
+      }, 4500);
+    });
+
+    // Data Loading Demo
+    dataLoadingBtn?.addEventListener('click', () => {
+      const dataLogo = document.querySelector('.demo-data-logo');
+      
+      // Show overlay
+      dataLoadingOverlay.classList.add('show');
+      
+      // Start continuous animation
+      dataLogo.classList.add('animate');
+      
+      // Hide after animation completes
+      setTimeout(() => {
+        dataLoadingOverlay.classList.remove('show');
+        dataLogo.classList.remove('animate');
+      }, 4500);
+    });
+  }
+
+  // Initialize all animations when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollAnimations();
+    initEnhancedInteractions();
+    initButtonEffects();
+    initLoadingDemos();
+  });
 </script>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 HadadaHealth. All rights reserved. Built by clinicians, for clinicians, with patient care at the heart of everything we do.</p>
+    </div>
+</footer>
+
 </body>
 </html>
