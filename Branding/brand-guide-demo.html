@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HadadaHealth Brand Guide Demo</title>
+  <style>
+    /* Design tokens derived from Branding/brand-style-guide-with-demos.md */
+    :root {
+      /* Colors */
+      --color-primary: #2D6356;   /* Hadada Green */
+      --color-secondary: #32517A; /* Deep Blue */
+      --color-text: #1F2937;
+      --color-muted: #6B7280;
+      --color-border: #E5E7EB;
+      --color-surface: #F9FAFB;
+      --color-white: #FFFFFF;
+      --color-success: #059669;
+      --color-info: #0EA5E9;
+      --color-warning: #F59E0B;
+      --color-error: #DC3545;
+
+      /* Radii/Shadows/Focus */
+      --radius-md: 8px;
+      --shadow-card: 0 4px 12px rgba(0,0,0,.08);
+      --shadow-modal: 0 8px 24px rgba(0,0,0,.12);
+      --focus-outline: 2px solid rgba(45,99,86,.4);
+      --focus-offset: 2px;
+
+      /* Typography */
+      --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      --font-serif: Georgia, "Times New Roman", Times, serif; /* For print preview blocks only */
+
+      /* Spacing (4px grid) */
+      --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
+      --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+    }
+
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-ui);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    :focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: var(--focus-offset);
+      border-radius: var(--radius-md);
+    }
+
+    /* Header / Nav - solid primary (no gradients) */
+    .nav {
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .nav .brand { display:flex; align-items:center; gap:var(--space-3); font-weight:700 }
+    .nav .brand img { width:32px; height:32px }
+    .nav a {
+      color: var(--color-white);
+      text-decoration: none;
+      opacity: .95;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      font-weight: 500;
+    }
+    .nav a:hover { background: rgba(255,255,255,.12) }
+    .nav a.active { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.12) }
+
+    .container { max-width: 1200px; margin: var(--space-10) auto; padding: 0 var(--space-6) }
+    h1 { font-size: 2rem; margin: var(--space-6) 0 var(--space-3) }
+    h2 { font-size: 1.5rem; margin: var(--space-6) 0 var(--space-3) }
+    h3 { font-size: 1.125rem; margin: var(--space-4) 0 var(--space-2) }
+    .muted { color: var(--color-muted) }
+
+    .grid { display: grid; gap: var(--space-6) }
+    .cols-2 { grid-template-columns: repeat(2, 1fr) }
+    .cols-3 { grid-template-columns: repeat(3, 1fr) }
+    @media (max-width: 900px) { .cols-3 { grid-template-columns: repeat(2, 1fr) } }
+    @media (max-width: 640px) { .cols-2, .cols-3 { grid-template-columns: 1fr } }
+
+    .card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      padding: var(--space-6);
+    }
+
+    /* Color swatches */
+    .swatch { display:flex; align-items:center; gap:var(--space-4); border:1px solid var(--color-border); border-radius:var(--radius-md); overflow:hidden }
+    .chip { width:72px; height:48px; flex:0 0 auto }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 13px; color: var(--color-muted) }
+
+    /* Buttons (Primary, Secondary, Tertiary, Danger) */
+    .btn { appearance:none; border-radius: var(--radius-md); font: inherit; font-weight: 600; cursor: pointer; padding: 10px 16px; border: 1px solid transparent; transition: background .15s ease, transform .1s ease; display:inline-flex; align-items:center; gap:8px }
+    .btn:hover { transform: translateY(-1px) }
+    .btn:active { transform: translateY(0) }
+    .btn-primary { background: var(--color-primary); color: var(--color-white) }
+    .btn-secondary { background: var(--color-white); color: var(--color-primary); border-color: var(--color-primary) }
+    .btn-tertiary { background: transparent; color: var(--color-secondary); text-decoration: underline; border: none; padding: 0 }
+    .btn-danger { background: var(--color-error); color: var(--color-white) }
+
+    /* Inputs */
+    .label { display:block; font-size:14px; font-weight:600; margin-bottom:6px }
+    .input, .select, .textarea { width:100%; min-height:44px; padding: 12px 14px; border:1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); color: var(--color-text); font-size:15px }
+    .textarea { min-height: 84px; resize: vertical }
+    .input:hover, .select:hover, .textarea:hover { border-color: #d4d9df }
+    .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(45,99,86,.12) }
+
+    /* Focus demo */
+    .focus-demo { display:flex; gap:12px; flex-wrap: wrap }
+    .focus-box { padding: 10px 12px; border:1px dashed var(--color-border); border-radius: var(--radius-md); background: var(--color-white) }
+
+    /* Wizard */
+    .stepper { display:flex; align-items:center; gap:16px }
+    .dot { width:32px; height:32px; border-radius: 50%; display:grid; place-items:center; color: #fff; font-weight: 700 }
+    .dot.completed { background: var(--color-primary) }
+    .dot.active { background: var(--color-secondary) }
+    .dot.upcoming { background: #D1D5DB; color: var(--color-text) }
+    .bar { width:72px; height:6px; background:#E5E7EB; border-radius:3px }
+    .bar.filled { background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)) }
+
+    /* Alerts (Status colors) */
+    .alert { border-radius: var(--radius-md); padding: 12px 14px; border: 1px solid }
+    .alert.success { background: #ECFDF5; color:#065F46; border-color:#A7F3D0 }
+    .alert.info { background: #EFF6FF; color:#1E40AF; border-color:#BFDBFE }
+    .alert.warning { background: #FFFBEB; color:#92400E; border-color:#FDE68A }
+    .alert.error { background: #FEF2F2; color:#991B1B; border-color:#FECACA }
+
+    /* Modal */
+    .overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,.5) }
+    .overlay.open { display:flex }
+    .modal { background: var(--color-white); border:1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-modal); width:min(640px, 100%); padding: var(--space-6) }
+
+    /* Utility */
+    .stack { display:flex; gap: 12px; flex-wrap: wrap }
+    .spacer { height: 16px }
+    ul { padding-left: 20px }
+    li { margin: 6px 0 }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">
+      <img src="Monogram%20Green.svg" alt="Hadada monogram"/>
+      <span>HadadaHealth</span>
+    </div>
+    <div style="margin-left:auto; display:flex; gap:12px;">
+      <a class="active" href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#components">Components</a>
+      <a href="#wizard">Wizard</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Brand Style Guide Demo</h1>
+    <p class="muted">Interactive demo implementing the brand tokens and component rules from the style guide. Solid Primary navigation, unified focus, consistent radii and shadows, and sans-serif UI typography.</p>
+
+    <section id="colors" class="grid cols-3">
+      <div class="card">
+        <h2>Brand Colors</h2>
+        <div class="swatch">
+          <div class="chip" style="background:var(--color-primary)"></div>
+          <div>
+            <strong>Primary</strong>
+            <div class="mono">#2D6356</div>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="swatch">
+          <div class="chip" style="background:var(--color-secondary)"></div>
+          <div>
+            <strong>Secondary</strong>
+            <div class="mono">#32517A</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Neutrals</h2>
+        <div class="swatch">
+          <div class="chip" style="background:#1F2937"></div>
+          <div>
+            <strong>Text</strong>
+            <div class="mono">#1F2937</div>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="swatch">
+          <div class="chip" style="background:#6B7280"></div>
+          <div>
+            <strong>Muted</strong>
+            <div class="mono">#6B7280</div>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="swatch">
+          <div class="chip" style="background:#F9FAFB; border-right:1px solid var(--color-border)"></div>
+          <div>
+            <strong>Surface</strong>
+            <div class="mono">#F9FAFB</div>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="swatch">
+          <div class="chip" style="background:#FFFFFF; border-right:1px solid var(--color-border)"></div>
+          <div>
+            <strong>White</strong>
+            <div class="mono">#FFFFFF</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Status</h2>
+        <div class="stack">
+          <div class="alert success">Success — Saved successfully</div>
+          <div class="alert info">Info — New update available</div>
+          <div class="alert warning">Warning — Check required fields</div>
+          <div class="alert error">Error — Something went wrong</div>
+        </div>
+        <p class="muted" style="margin-top:12px">Status colors are for feedback only. Avoid using them for primary navigation or layout accents.</p>
+      </div>
+    </section>
+
+    <section id="typography" class="grid cols-2" style="margin-top:var(--space-8)">
+      <div class="card">
+        <h2>UI Typography (Sans)</h2>
+        <p>Use system sans-serif for all in-app UI for clarity and consistency.</p>
+        <h3>Headings</h3>
+        <div style="font-weight:700; font-size:22px">H3 — Patient Overview</div>
+        <div style="font-weight:600; font-size:18px">Subtitle — Recent Activity</div>
+        <h3>Body</h3>
+        <p class="muted">Body example — Clinical, concise copy with high readability and neutral tone.</p>
+      </div>
+      <div class="card">
+        <h2>Print Preview (Serif)</h2>
+        <p>Serif type is reserved for PDF export/print preview only.</p>
+        <div style="font-family:var(--font-serif)">
+          <div style="font-weight:700; font-size:22px">H3 — Discharge Summary</div>
+          <p style="margin:8px 0">The patient tolerated treatment well. Continue current plan of care as indicated by the multidisciplinary team.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="grid cols-3" style="margin-top:var(--space-8)">
+      <div class="card">
+        <h2>Buttons</h2>
+        <div class="stack">
+          <button class="btn btn-primary">Primary Action</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-tertiary">Tertiary Link</button>
+          <button class="btn btn-danger">Danger</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Inputs</h2>
+        <label class="label" for="name">Full Name</label>
+        <input id="name" class="input" placeholder="Dr. Jane Smith">
+        <div class="spacer"></div>
+        <label class="label" for="discipline">Discipline</label>
+        <select id="discipline" class="select">
+          <option>Physiotherapist</option>
+          <option>Occupational Therapist</option>
+          <option>Speech Therapist</option>
+        </select>
+        <div class="spacer"></div>
+        <label class="label" for="notes">Clinical Notes</label>
+        <textarea id="notes" class="textarea" placeholder="Add detailed observations..."></textarea>
+      </div>
+      <div class="card">
+        <h2>Cards</h2>
+        <p>Cards use a single radius and subtle shadow. Avoid heavy gradients. Keep spacing consistent and content scannable.</p>
+      </div>
+    </section>
+
+    <section id="wizard" class="card" style="margin-top:var(--space-8)">
+      <h2>Wizard / Progress</h2>
+      <div class="stepper">
+        <div class="dot completed">1</div>
+        <div class="bar filled"></div>
+        <div class="dot active">2</div>
+        <div class="bar"></div>
+        <div class="dot upcoming">3</div>
+        <div class="bar"></div>
+        <div class="dot upcoming">4</div>
+      </div>
+      <p class="muted" style="margin-top:12px">Active steps use Secondary; completed steps use Primary. Removed tertiary blues.</p>
+    </section>
+
+    <section class="card" style="margin-top:var(--space-8)">
+      <h2>Focus States</h2>
+      <p class="muted">All interactive elements use a consistent 2px focus outline in Primary with 2px offset.</p>
+      <div class="focus-demo" style="margin-top:8px">
+        <button class="btn btn-secondary">Focusable Button</button>
+        <input class="input" placeholder="Focusable input"/>
+        <a href="#" class="focus-box" tabindex="0">Focusable link-like box</a>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:var(--space-8)">
+      <h2>Modal</h2>
+      <p>Modal uses the standard card shadow and 8px radius.</p>
+      <div class="stack" style="justify-content:flex-end">
+        <button id="openModal" class="btn btn-primary">Open Modal</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h3>Sample Modal</h3>
+      <p>This modal demonstrates the standard elevation and radius defined in the brand guide.</p>
+      <div class="stack" style="justify-content:flex-end">
+        <button id="closeModal" class="btn btn-secondary">Close</button>
+        <button class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    document.getElementById('openModal').addEventListener('click', () => overlay.classList.add('open'));
+    document.getElementById('closeModal').addEventListener('click', () => overlay.classList.remove('open'));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open') });
+  </script>
+</body>
+</html>
+

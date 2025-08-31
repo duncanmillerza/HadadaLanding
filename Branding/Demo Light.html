@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HadadaHealth UI Style Demo — Modern Edition</title>
+<style>
+  /* =============================
+     Brand Tokens (CSS Variables)
+     Based on original palette with modern refinements
+     ============================= */
+  :root{
+    /* Brand */
+    --color-primary:#2D6356;     /* Hadada Green */
+    --color-secondary:#32517A;   /* Deep Blue */
+    --color-accent:#96364C;      /* Hadada Maroon accent */
+
+    /* Neutrals - Enhanced */
+    --color-soft:#CDD3CE;        /* Sage grey */
+    --color-surface:#FAFAFA;     /* Slightly warmer off-white */
+    --color-white:#FFFFFF;
+    --color-black:#0F172A;       /* True black for better contrast */
+    --color-text:#0F172A;        /* Updated to use new black */
+    --color-muted:#64748B;       /* Slightly refined muted */
+    --color-border:#F1F5F9;      /* Much lighter border */
+
+    /* Status */
+    --color-success:#059669;
+    --color-info:#0EA5E9;
+    --color-warning:#F59E0B;
+    --color-error:#DC3545;
+
+    /* Radii & shadows - Modern */
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:12px;
+    --shadow-card:0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.1);
+    --shadow-card-hover:0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+    --shadow-modal:0 20px 25px rgba(0,0,0,.1), 0 10px 10px rgba(0,0,0,.04);
+
+    /* Focus - Enhanced */
+    --focus-outline:2px solid rgba(45,99,86,.40);
+    --focus-ring:0 0 0 3px rgba(45,99,86,.1);
+    --focus-offset:2px;
+
+    /* Typography - Improved */
+    --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: Georgia, "Times New Roman", Times, serif;
+
+    /* Spacing - 4px grid system */
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; 
+    --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--color-surface);
+    color:var(--color-text);
+    font-family:var(--font-ui);
+    font-size:16px;
+    line-height:1.6;
+  }
+  :focus-visible{ 
+    outline:var(--focus-outline); 
+    outline-offset:var(--focus-offset); 
+    border-radius:var(--radius-md);
+  }
+
+  /* Typography - Modern hierarchy */
+  h1 { 
+    font-size: 2.5rem; 
+    font-weight: 600; 
+    letter-spacing: -0.025em;
+    margin: var(--space-8) 0 var(--space-4);
+  }
+  h2 { 
+    font-size: 1.75rem; 
+    font-weight: 600; 
+    letter-spacing: -0.025em;
+    margin: var(--space-6) 0 var(--space-3);
+  }
+  h3 { 
+    font-size: 1.25rem; 
+    font-weight: 500; 
+    letter-spacing: -0.025em;
+    margin: var(--space-5) 0 var(--space-3);
+  }
+
+  /* Navigation - Modern glass effect */
+  .nav{
+    background:var(--color-primary);
+    backdrop-filter: blur(10px);
+    color:var(--color-white);
+    padding:var(--space-5) var(--space-6);
+    display:flex; 
+    align-items:center; 
+    gap:var(--space-4);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .nav .brand{
+    display:flex; 
+    align-items:center; 
+    gap:var(--space-3); 
+    font-weight:700; 
+    font-size: 1.1rem;
+    letter-spacing:.2px;
+  }
+  .nav .brand svg{width:32px;height:32px}
+  .nav a{
+    color:var(--color-white); 
+    text-decoration:none; 
+    opacity:.9; 
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    border-bottom:2px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  .nav a.active{
+    border-color:var(--color-accent);
+    background: rgba(255,255,255,.1);
+  }
+  .nav a:hover{
+    opacity:1;
+    background: rgba(255,255,255,.1);
+    transform: translateY(-1px);
+  }
+
+  .container{
+    max-width:1200px; 
+    margin:var(--space-10) auto; 
+    padding:0 var(--space-6);
+  }
+
+  .grid{display:grid; gap:var(--space-8)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:900px){ .grid.cols-3{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:640px){ .grid.cols-2, .grid.cols-3{grid-template-columns:1fr} }
+
+  /* Cards - Modern styling */
+  .card{
+    background:var(--color-white);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    padding:var(--space-8);
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Buttons - Enhanced modern styling */
+  .btn{
+    appearance:none; 
+    border-radius:var(--radius-md); 
+    font:inherit; 
+    font-weight: 500;
+    font-size: 15px;
+    cursor:pointer; 
+    padding: 12px 20px; 
+    border:1px solid transparent; 
+    transition: all .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .btn:hover{
+    transform: translateY(-1px);
+    filter: brightness(0.98);
+  }
+  .btn:active{
+    transform: translateY(0);
+  }
+  .btn:disabled{opacity:.6; cursor:not-allowed; transform: none}
+
+  .btn-primary{
+    background:var(--color-primary); 
+    color:var(--color-white);
+    box-shadow: 0 2px 4px rgba(45,99,86,.2);
+  }
+  .btn-primary:hover{
+    box-shadow: 0 4px 8px rgba(45,99,86,.25);
+  }
+  .btn-secondary{
+    background:var(--color-white); 
+    color:var(--color-primary); 
+    border-color:var(--color-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  }
+  .btn-secondary:hover{
+    background: rgba(45,99,86,.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+  }
+  .btn-tertiary{
+    background:transparent; 
+    color:var(--color-secondary); 
+    border:none; 
+    padding: 8px 0; 
+    text-decoration:underline; 
+    border-radius:0;
+    font-weight: 500;
+  }
+  .btn-accent{
+    background:var(--color-accent); 
+    color:var(--color-white);
+    box-shadow: 0 2px 4px rgba(150,54,76,.2);
+  }
+  .btn-accent:hover{
+    box-shadow: 0 4px 8px rgba(150,54,76,.25);
+  }
+  .btn-danger{
+    background:var(--color-error); 
+    color:var(--color-white);
+    box-shadow: 0 2px 4px rgba(220,53,69,.2);
+  }
+
+  /* Inputs - Modern styling */
+  .label{
+    display:block; 
+    font-size:14px; 
+    font-weight: 500;
+    color:var(--color-text); 
+    margin-bottom:8px;
+  }
+  .input, 
+  .select,
+  .textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: var(--color-text);
+    font-size: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.2s ease;
+  }
+  .select {
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230F172A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px 20px;
+  }
+  .textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .input:hover, .select:hover, .textarea:hover { 
+    border-color: #D1D5DB; 
+  }
+  .input:focus, .select:focus, .textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+  }
+  .input:disabled, .select:disabled, .textarea:disabled { 
+    opacity: .6; 
+    cursor: not-allowed; 
+  }
+
+  /* Swatches - Enhanced */
+  .swatch{
+    border-radius:var(--radius-md); 
+    border:1px solid var(--color-border); 
+    overflow:hidden; 
+    display:flex; 
+    align-items:center;
+    transition: all 0.2s ease;
+  }
+  .swatch:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card);
+  }
+  .swatch .chip{width:80px; height:56px; flex:0 0 auto}
+  .swatch .meta{padding:0 16px}
+  .mono{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; 
+    font-size:13px;
+    color: var(--color-muted);
+  }
+  .muted{color:var(--color-muted)}
+
+  /* Accent dividers - Enhanced */
+  .divider{
+    height:6px; 
+    background:linear-gradient(90deg, var(--color-secondary), var(--color-accent)); 
+    border-radius:999px;
+    margin: var(--space-8) 0;
+  }
+
+  /* Wizard - Enhanced */
+  .stepper{display:flex; align-items:center; gap:20px}
+  .dot{
+    width:36px; 
+    height:36px; 
+    border-radius:999px; 
+    display:grid; 
+    place-items:center; 
+    color:#fff; 
+    font-weight:700;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  .dot.completed{
+    background:var(--color-primary);
+    box-shadow: 0 2px 4px rgba(45,99,86,.2);
+  }
+  .dot.active{
+    background:var(--color-secondary);
+    box-shadow: 0 2px 4px rgba(50,81,122,.2);
+    transform: scale(1.1);
+  }
+  .dot.upcoming{
+    background:var(--color-soft); 
+    color:var(--color-text);
+    border: 2px solid var(--color-border);
+  }
+  .bar{
+    height:6px; 
+    width:80px; 
+    background:var(--color-soft); 
+    border-radius:3px;
+    transition: all 0.3s ease;
+  }
+  .bar.filled{
+    background:linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  }
+
+  /* Banner - Enhanced */
+  .banner{
+    background:var(--color-accent); 
+    color:#fff; 
+    padding: 16px 20px; 
+    border-radius:var(--radius-md);
+    box-shadow: 0 2px 4px rgba(150,54,76,.2);
+    font-weight: 500;
+  }
+
+  /* Modal - Enhanced */
+  .overlay{
+    position:fixed; 
+    inset:0; 
+    background:rgba(0,0,0,.6); 
+    backdrop-filter: blur(4px);
+    display:none; 
+    align-items:center; 
+    justify-content:center; 
+    padding:var(--space-6);
+  }
+  .overlay.open{display:flex}
+  .modal{
+    background:var(--color-white); 
+    border:1px solid var(--color-border); 
+    border-radius:var(--radius-lg); 
+    box-shadow:var(--shadow-modal); 
+    width:min(640px, 100%); 
+    padding:var(--space-8);
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+  }
+  .overlay.open .modal{
+    transform: scale(1);
+  }
+
+  /* Enhanced list styling */
+  ul {
+    padding-left: var(--space-5);
+  }
+  li {
+    margin-bottom: var(--space-2);
+    line-height: 1.6;
+  }
+  li strong {
+    color: var(--color-text);
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div style="background:#FFF3CD; color:#111827; border:1px solid #FDE68A; padding:10px 14px; margin:0; text-align:center;">
+      This Light demo has been consolidated into a single <strong>combined Light & Dark</strong> page.
+      Open <a href="Demo%20Dark.html" style="color:#111827; text-decoration:underline; font-weight:600;">Demo Dark.html</a> and use the toggle.
+    </div>
+    <div class="brand">
+      <!-- Inline bird icon (monoline) -->
+      <svg viewBox="0 0 96 96" fill="none" aria-hidden="true">
+        <path d="M63.5 26c6.8 1.5 23.4 7.4 27 25" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="60" cy="27.5" r="2" fill="#fff"/>
+        <path d="M60 28c-6 2.5-8 10-2 15 16 14 10 31-18 35" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 62c10-16 28-27 40-19 15 10 2 32-40 27" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M44 69v18M52 67v22" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Hadada Health</span>
+    </div>
+    <div style="margin-left:auto; display:flex; gap:16px;">
+      <a class="active" href="#colors">Colors</a>
+      <a href="#components">Components</a>
+      <a href="#wizard">Wizard</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Modern Style Guide</h1>
+    <p class="muted">Enhanced with modern design principles: softer shadows, improved typography hierarchy, refined interactions, and contemporary spacing. The color palette maintains healthcare professionalism while feeling fresh and approachable.</p>
+    <div class="divider" aria-hidden="true"></div>
+
+    <section id="colors" class="grid cols-3">
+      <div class="card">
+        <h2>Brand Colors</h2>
+        <div class="swatch">
+          <div class="chip" style="background:var(--color-primary)"></div>
+          <div class="meta">
+            <strong>Primary</strong>
+            <div class="mono">#2D6356</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-secondary)"></div>
+          <div class="meta">
+            <strong>Secondary</strong>
+            <div class="mono">#32517A</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-accent)"></div>
+          <div class="meta">
+            <strong>Accent</strong>
+            <div class="mono">#96364C</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Neutrals</h2>
+        <div class="swatch">
+          <div class="chip" style="background:var(--color-soft)"></div>
+          <div class="meta">
+            <strong>Soft</strong>
+            <div class="mono">#CDD3CE</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-surface)"></div>
+          <div class="meta">
+            <strong>Surface</strong>
+            <div class="mono">#FAFAFA</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:#FFFFFF; border-right:1px solid var(--color-border)"></div>
+          <div class="meta">
+            <strong>White</strong>
+            <div class="mono">#FFFFFF</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Usage Guidelines</h2>
+        <ul>
+          <li><strong>Primary</strong>: Navigation, primary CTAs, key UI chrome</li>
+          <li><strong>Secondary</strong>: Links, active states, progress indicators</li>
+          <li><strong>Accent</strong>: Highlights, notifications, special moments</li>
+          <li><strong>Neutrals</strong>: Backgrounds, borders, supporting content</li>
+        </ul>
+        <div class="banner" style="margin-top:20px">
+          ✨ Accent banner for important announcements
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="grid cols-3" style="margin-top:48px">
+      <div class="card">
+        <h2>Buttons</h2>
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom: 20px;">
+          <button class="btn btn-primary">Primary Action</button>
+          <button class="btn btn-secondary">Secondary</button>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <button class="btn btn-accent">Accent</button>
+          <button class="btn btn-tertiary">Tertiary Link</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Form Controls</h2>
+        <label class="label" for="name">Full Name</label>
+        <input class="input" id="name" placeholder="Dr. Jane Smith">
+        
+        <div style="height:20px"></div>
+        
+        <label class="label" for="discipline">Medical Discipline</label>
+        <select class="select" id="discipline">
+          <option>Physiotherapist</option>
+          <option>Occupational Therapist</option>
+          <option>Speech-Language Therapist</option>
+          <option>Clinical Psychologist</option>
+          <option>General Practitioner</option>
+        </select>
+        
+        <div style="height:20px"></div>
+        
+        <label class="label" for="notes">Clinical Notes</label>
+        <textarea class="textarea" id="notes" rows="3" placeholder="Add detailed clinical observations..."></textarea>
+      </div>
+      <div class="card">
+        <h2>Modern Cards</h2>
+        <p>Cards now feature softer borders, refined shadows, and subtle hover interactions. The enhanced spacing creates better visual hierarchy and improved readability.</p>
+        <p><strong>New features:</strong> Hover animations, improved focus states, and better contrast ratios for accessibility.</p>
+      </div>
+    </section>
+
+    <section id="wizard" class="card" style="margin-top:48px">
+      <h2>Progress & Navigation</h2>
+      <div class="stepper">
+        <div class="dot completed">1</div>
+        <div class="bar filled"></div>
+        <div class="dot active">2</div>
+        <div class="bar"></div>
+        <div class="dot upcoming">3</div>
+        <div class="bar"></div>
+        <div class="dot upcoming">4</div>
+      </div>
+      <p class="muted" style="margin-top:20px;">
+        Enhanced wizard with larger touch targets, gradient progress bars, and smooth transitions. 
+        Active state includes subtle scaling for better visual feedback.
+      </p>
+    </section>
+  </main>
+
+  <!-- Enhanced Modal -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <h3>Enhanced Modal Dialog</h3>
+      <p>This modal features improved shadows, backdrop blur, and smooth entrance animations. The rounded corners and refined spacing create a more modern, polished experience.</p>
+      <div style="display:flex; gap:16px; justify-content:flex-end; margin-top:24px">
+        <button class="btn btn-secondary" id="closeModalBtn">Cancel</button>
+        <button class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Enhanced modal with smooth transitions
+  const overlay = document.getElementById('overlay');
+  const closeBtn = document.getElementById('closeModalBtn');
+  
+  // Open modal on load to preview
+  window.addEventListener('load', () => {
+    setTimeout(() => overlay.classList.add('open'), 500);
+  });
+  
+  closeBtn?.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay?.addEventListener('click', (e) => { 
+    if(e.target === overlay) overlay.classList.remove('open') 
+  });
+</script>
+</body>
+</html>

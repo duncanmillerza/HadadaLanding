@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HadadaHealth UI Style Demo — Refined Dark Mode</title>
+<style>
+  /* =============================
+     Brand Tokens (CSS Variables)
+     Light and Dark Mode Support - Refined
+     ============================= */
+  :root{
+    /* Brand - Same across themes */
+    --color-primary:#2D6356;
+    --color-secondary:#32517A;
+    --color-accent:#96364C;
+
+    /* Light mode colors */
+    --color-soft-light:#CDD3CE;
+    --color-surface-light:#FAFAFA;
+    --color-white-light:#FFFFFF;
+    --color-black-light:#0F172A;
+    --color-text-light:#0F172A;
+    --color-muted-light:#64748B;
+    --color-border-light:#F1F5F9;
+
+    /* Dark mode colors - Much more subdued and professional */
+    --color-primary-dark:#3B7F71;       /* Slightly brighter version of original green */
+    --color-secondary-dark:#1E3A8A;     /* Much darker blue, almost navy */
+    --color-accent-dark:#A8556B;        /* Muted version of the maroon */
+    --color-soft-dark:#374151;          /* Dark grey */
+    --color-surface-dark:#0F1419;       /* Very dark background */
+    --color-white-dark:#1F2937;         /* Dark card background */
+    --color-black-dark:#F3F4F6;         /* Light text on dark */
+    --color-text-dark:#F3F4F6;          /* Light text */
+    --color-muted-dark:#9CA3AF;         /* Muted text for dark */
+    --color-border-dark:#374151;        /* Dark borders */
+
+    /* Default to light mode */
+    --color-soft:var(--color-soft-light);
+    --color-surface:var(--color-surface-light);
+    --color-white:var(--color-white-light);
+    --color-black:var(--color-black-light);
+    --color-text:var(--color-text-light);
+    --color-muted:var(--color-muted-light);
+    --color-border:var(--color-border-light);
+
+    /* Status colors - More professional for dark mode */
+    --color-success:#059669;
+    --color-info:#0EA5E9;
+    --color-warning:#F59E0B;
+    --color-error:#DC3545;
+
+    /* Dark mode status colors - Subdued */
+    --color-success-dark:#059669;
+    --color-info-dark:#0369A1;
+    --color-warning-dark:#D97706;
+    --color-error-dark:#DC2626;
+
+    /* Radii & shadows */
+    --radius-sm:6px;
+    --radius-md:10px;
+    --radius-lg:12px;
+    --shadow-card:0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.1);
+    --shadow-card-hover:0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+    --shadow-modal:0 20px 25px rgba(0,0,0,.1), 0 10px 10px rgba(0,0,0,.04);
+
+    /* Dark mode shadows */
+    --shadow-card-dark:0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.3);
+    --shadow-card-hover-dark:0 4px 6px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.4);
+    --shadow-modal-dark:0 20px 25px rgba(0,0,0,.6), 0 10px 10px rgba(0,0,0,.4);
+
+    /* Focus - More subdued */
+    --focus-outline:2px solid var(--color-primary);
+    --focus-ring:0 0 0 3px rgba(59,127,113,.2);
+    --focus-offset:2px;
+
+    /* Typography */
+    --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    --font-serif: Georgia, "Times New Roman", Times, serif;
+
+    /* Spacing */
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; 
+    --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  }
+
+  /* Dark mode activation */
+  [data-theme="dark"] {
+    --color-primary:var(--color-primary-dark);
+    --color-secondary:var(--color-secondary-dark);
+    --color-accent:var(--color-accent-dark);
+    --color-soft:var(--color-soft-dark);
+    --color-surface:var(--color-surface-dark);
+    --color-white:var(--color-white-dark);
+    --color-black:var(--color-black-dark);
+    --color-text:var(--color-text-dark);
+    --color-muted:var(--color-muted-dark);
+    --color-border:var(--color-border-dark);
+    --color-success:var(--color-success-dark);
+    --color-info:var(--color-info-dark);
+    --color-warning:var(--color-warning-dark);
+    --color-error:var(--color-error-dark);
+    --shadow-card:var(--shadow-card-dark);
+    --shadow-card-hover:var(--shadow-card-hover-dark);
+    --shadow-modal:var(--shadow-modal-dark);
+    --focus-ring:0 0 0 3px rgba(59,127,113,.3);
+  }
+
+  /* Auto dark mode based on system preference */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-primary:var(--color-primary-dark);
+      --color-secondary:var(--color-secondary-dark);
+      --color-accent:var(--color-accent-dark);
+      --color-soft:var(--color-soft-dark);
+      --color-surface:var(--color-surface-dark);
+      --color-white:var(--color-white-dark);
+      --color-black:var(--color-black-dark);
+      --color-text:var(--color-text-dark);
+      --color-muted:var(--color-muted-dark);
+      --color-border:var(--color-border-dark);
+      --color-success:var(--color-success-dark);
+      --color-info:var(--color-info-dark);
+      --color-warning:var(--color-warning-dark);
+      --color-error:var(--color-error-dark);
+      --shadow-card:var(--shadow-card-dark);
+      --shadow-card-hover:var(--shadow-card-hover-dark);
+      --shadow-modal:var(--shadow-modal-dark);
+      --focus-ring:0 0 0 3px rgba(59,127,113,.3);
+    }
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--color-surface);
+    color:var(--color-text);
+    font-family:var(--font-ui);
+    font-size:16px;
+    line-height:1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  :focus-visible{ 
+    outline:var(--focus-outline); 
+    outline-offset:var(--focus-offset); 
+    border-radius:var(--radius-md);
+  }
+
+  /* Typography */
+  h1 { 
+    font-size: 2.5rem; 
+    font-weight: 600; 
+    letter-spacing: -0.025em;
+    margin: var(--space-8) 0 var(--space-4);
+  }
+  h2 { 
+    font-size: 1.75rem; 
+    font-weight: 600; 
+    letter-spacing: -0.025em;
+    margin: var(--space-6) 0 var(--space-3);
+  }
+  h3 { 
+    font-size: 1.25rem; 
+    font-weight: 500; 
+    letter-spacing: -0.025em;
+    margin: var(--space-5) 0 var(--space-3);
+  }
+
+  /* Dark mode toggle */
+  .theme-toggle {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .theme-toggle:hover {
+    background: rgba(255,255,255,.1);
+    border-color: rgba(255,255,255,.3);
+  }
+
+  /* Navigation - More subtle dark mode */
+  .nav{
+    background: linear-gradient(135deg, var(--color-primary), #245249);
+    backdrop-filter: blur(10px);
+    color:#FFFFFF;
+    padding:var(--space-5) var(--space-6);
+    display:flex; 
+    align-items:center; 
+    gap:var(--space-4);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    position: relative;
+  }
+  .nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+  }
+  .nav .brand{
+    display:flex; 
+    align-items:center; 
+    gap:var(--space-3); 
+    font-weight:700; 
+    font-size: 1.1rem;
+    letter-spacing:.2px;
+  }
+  .nav .brand svg{width:32px;height:32px}
+  .nav a{
+    color:#FFFFFF; 
+    text-decoration:none; 
+    opacity:.9; 
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    border-bottom:2px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  .nav a.active{
+    border-color:var(--color-accent);
+    background: rgba(255,255,255,.15);
+    opacity: 1;
+  }
+  .nav a:hover{
+    opacity:1;
+    background: rgba(255,255,255,.1);
+    transform: translateY(-1px);
+  }
+
+  .container{
+    max-width:1200px; 
+    margin:var(--space-10) auto; 
+    padding:0 var(--space-6);
+  }
+
+  .grid{display:grid; gap:var(--space-8)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:900px){ .grid.cols-3{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:640px){ .grid.cols-2, .grid.cols-3{grid-template-columns:1fr} }
+
+  /* Cards */
+  .card{
+    background:var(--color-white);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-card);
+    padding:var(--space-8);
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Buttons */
+  .btn{
+    appearance:none; 
+    border-radius:var(--radius-md); 
+    font:inherit; 
+    font-weight: 500;
+    font-size: 15px;
+    cursor:pointer; 
+    padding: 12px 20px; 
+    border:1px solid transparent; 
+    transition: all .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .btn:hover{
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+  }
+  .btn:active{
+    transform: translateY(0);
+  }
+  .btn:disabled{opacity:.6; cursor:not-allowed; transform: none}
+
+  .btn-primary{
+    background:var(--color-primary); 
+    color:#FFFFFF;
+    box-shadow: 0 2px 4px rgba(45,99,86,.2);
+  }
+  .btn-primary:hover{
+    box-shadow: 0 4px 8px rgba(45,99,86,.3);
+  }
+  .btn-secondary{
+    background:var(--color-white); 
+    color:var(--color-primary); 
+    border-color:var(--color-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  }
+  .btn-secondary:hover{
+    background: var(--color-surface);
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+  }
+  .btn-tertiary{
+    background:transparent; 
+    color:var(--color-secondary); 
+    border:none; 
+    padding: 8px 0; 
+    text-decoration:underline; 
+    border-radius:0;
+    font-weight: 500;
+  }
+  .btn-accent{
+    background:var(--color-accent); 
+    color:#FFFFFF;
+    box-shadow: 0 2px 4px rgba(150,54,76,.2);
+  }
+  .btn-accent:hover{
+    box-shadow: 0 4px 8px rgba(150,54,76,.3);
+  }
+  .btn-danger{
+    background:var(--color-error); 
+    color:#FFFFFF;
+    box-shadow: 0 2px 4px rgba(220,52,69,.2);
+  }
+
+  /* Inputs */
+  .label{
+    display:block; 
+    font-size:14px; 
+    font-weight: 500;
+    color:var(--color-text); 
+    margin-bottom:8px;
+  }
+  .input, 
+  .select,
+  .textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: var(--color-text);
+    font-size: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.2s ease;
+  }
+  .select {
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23F3F4F6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px 20px;
+  }
+  
+  /* Light mode select arrow */
+  @media (prefers-color-scheme: light) {
+    .select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230F172A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    }
+  }
+  
+  .textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .input:hover, .select:hover, .textarea:hover { 
+    border-color: var(--color-soft); 
+  }
+  .input:focus, .select:focus, .textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+  }
+  .input:disabled, .select:disabled, .textarea:disabled { 
+    opacity: .6; 
+    cursor: not-allowed; 
+  }
+
+  /* Swatches */
+  .swatch{
+    border-radius:var(--radius-md); 
+    border:1px solid var(--color-border); 
+    overflow:hidden; 
+    display:flex; 
+    align-items:center;
+    transition: all 0.2s ease;
+  }
+  .swatch:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card);
+  }
+  .swatch .chip{width:80px; height:56px; flex:0 0 auto}
+  .swatch .meta{padding:0 16px}
+  .mono{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; 
+    font-size:13px;
+    color: var(--color-muted);
+  }
+  .muted{color:var(--color-muted)}
+
+  /* Gradient dividers */
+  .divider{
+    height:6px; 
+    background:linear-gradient(90deg, var(--color-secondary), var(--color-accent)); 
+    border-radius:999px;
+    margin: var(--space-8) 0;
+  }
+
+  /* Wizard */
+  .stepper{display:flex; align-items:center; gap:20px}
+  .dot{
+    width:36px; 
+    height:36px; 
+    border-radius:999px; 
+    display:grid; 
+    place-items:center; 
+    color:#fff; 
+    font-weight:700;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  .dot.completed{
+    background:var(--color-primary);
+    box-shadow: 0 2px 4px rgba(59,127,113,.3);
+  }
+  .dot.active{
+    background:var(--color-secondary);
+    box-shadow: 0 2px 4px rgba(50,81,122,.3);
+    transform: scale(1.1);
+  }
+  .dot.upcoming{
+    background:var(--color-soft); 
+    color:var(--color-text);
+    border: 2px solid var(--color-border);
+  }
+  .bar{
+    height:6px; 
+    width:80px; 
+    background:var(--color-soft); 
+    border-radius:3px;
+    transition: all 0.3s ease;
+  }
+  .bar.filled{
+    background:linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  }
+
+  /* Banner */
+  .banner{
+    background:var(--color-accent); 
+    color:#FFFFFF; 
+    padding: 16px 20px; 
+    border-radius:var(--radius-md);
+    box-shadow: 0 2px 4px rgba(168,85,107,.2);
+    font-weight: 500;
+  }
+
+  /* Modal */
+  .overlay{
+    position:fixed; 
+    inset:0; 
+    background:rgba(0,0,0,.7); 
+    backdrop-filter: blur(8px);
+    display:none; 
+    align-items:center; 
+    justify-content:center; 
+    padding:var(--space-6);
+  }
+  .overlay.open{display:flex}
+  .modal{
+    background:var(--color-white); 
+    border:1px solid var(--color-border); 
+    border-radius:var(--radius-lg); 
+    box-shadow:var(--shadow-modal); 
+    width:min(640px, 100%); 
+    padding:var(--space-8);
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+  }
+  .overlay.open .modal{
+    transform: scale(1);
+  }
+
+  /* Enhanced list styling */
+  ul {
+    padding-left: var(--space-5);
+  }
+  li {
+    margin-bottom: var(--space-2);
+    line-height: 1.6;
+  }
+  li strong {
+    color: var(--color-text);
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">
+      <!-- Inline bird icon (monoline) -->
+      <svg viewBox="0 0 96 96" fill="none" aria-hidden="true">
+        <path d="M63.5 26c6.8 1.5 23.4 7.4 27 25" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="60" cy="27.5" r="2" fill="#fff"/>
+        <path d="M60 28c-6 2.5-8 10-2 15 16 14 10 31-18 35" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 62c10-16 28-27 40-19 15 10 2 32-40 27" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M44 69v18M52 67v22" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Hadada Health</span>
+    </div>
+    <div style="margin-left:auto; display:flex; gap:16px; align-items: center;">
+      <a class="active" href="#colors">Colors</a>
+      <a href="#components">Components</a>
+      <a href="#wizard">Wizard</a>
+      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Professional Dark Mode</h1>
+    <p class="muted">Refined dark mode with professional, subdued colors appropriate for healthcare applications. The color palette maintains readability while avoiding overly bright or distracting elements.</p>
+    <div class="divider" aria-hidden="true"></div>
+
+    <section id="colors" class="grid cols-3">
+      <div class="card">
+        <h2>Brand Colors</h2>
+        <div class="swatch">
+          <div class="chip" style="background:var(--color-primary)"></div>
+          <div class="meta">
+            <strong>Primary</strong>
+            <div class="mono" id="primary-hex">#3B7F71</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-secondary)"></div>
+          <div class="meta">
+            <strong>Secondary</strong>
+            <div class="mono" id="secondary-hex">#1E3A8A</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-accent)"></div>
+          <div class="meta">
+            <strong>Accent</strong>
+            <div class="mono" id="accent-hex">#A8556B</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Neutrals</h2>
+        <div class="swatch">
+          <div class="chip" style="background:var(--color-soft)"></div>
+          <div class="meta">
+            <strong>Soft</strong>
+            <div class="mono" id="soft-hex">#374151</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-surface)"></div>
+          <div class="meta">
+            <strong>Surface</strong>
+            <div class="mono" id="surface-hex">#0F1419</div>
+          </div>
+        </div>
+        <div class="swatch" style="margin-top:16px">
+          <div class="chip" style="background:var(--color-white); border-right:1px solid var(--color-border)"></div>
+          <div class="meta">
+            <strong>Cards</strong>
+            <div class="mono" id="white-hex">#1F2937</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Professional Design</h2>
+        <ul>
+          <li><strong>Subdued Colors</strong>: Professional tones suitable for clinical environments</li>
+          <li><strong>Enhanced Contrast</strong>: Maintains WCAG compliance without being harsh</li>
+          <li><strong>Eye Comfort</strong>: Reduced brightness prevents fatigue during long sessions</li>
+          <li><strong>Brand Consistency</strong>: Colors remain true to the Hadada Health identity</li>
+        </ul>
+        <div class="banner" style="margin-top:20px">
+          ⚡ Professional dark mode optimized for healthcare
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="grid cols-3" style="margin-top:48px">
+      <div class="card">
+        <h2>Interactive Elements</h2>
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom: 20px;">
+          <button class="btn btn-primary">Primary Action</button>
+          <button class="btn btn-secondary">Secondary</button>
+        </div>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <button class="btn btn-accent">Accent</button>
+          <button class="btn btn-tertiary">Tertiary Link</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Form Controls</h2>
+        <label class="label" for="name">Healthcare Professional</label>
+        <input class="input" id="name" placeholder="Dr. Sarah Johnson">
+        
+        <div style="height:20px"></div>
+        
+        <label class="label" for="discipline">Specialization</label>
+        <select class="select" id="discipline">
+          <option>Cardiology</option>
+          <option>Neurology</option>
+          <option>Orthopedics</option>
+          <option>Pediatrics</option>
+          <option>Emergency Medicine</option>
+        </select>
+        
+        <div style="height:20px"></div>
+        
+        <label class="label" for="notes">Patient Notes</label>
+        <textarea class="textarea" id="notes" rows="3" placeholder="Enter detailed patient observations..."></textarea>
+      </div>
+      <div class="card">
+        <h2>Refined Experience</h2>
+        <p>The refined dark mode uses carefully selected colors that maintain professionalism while providing excellent contrast for medical data and patient information.</p>
+        <p><strong>Healthcare focused:</strong> Colors are chosen to be calming and professional, suitable for patient-facing applications and clinical workflows.</p>
+      </div>
+    </section>
+
+    <section id="wizard" class="card" style="margin-top:48px">
+      <h2>Patient Care Workflow</h2>
+      <div class="stepper">
+        <div class="dot completed">1</div>
+        <div class="bar filled"></div>
+        <div class="dot active">2</div>
+        <div class="bar"></div>
+        <div class="dot upcoming">3</div>
+        <div class="bar"></div>
+        <div class="dot upcoming">4</div>
+      </div>
+      <p class="muted" style="margin-top:20px;">
+        Professional progress tracking with refined colors that maintain clarity without being distracting. Perfect for monitoring patient progress and clinical workflows.
+      </p>
+    </section>
+  </main>
+
+  <!-- Enhanced Modal -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <h3>Refined Dark Mode</h3>
+      <p>This professional dark mode maintains excellent readability while using subdued colors appropriate for healthcare environments. The design prioritizes user comfort during extended use.</p>
+      <div style="display:flex; gap:16px; justify-content:flex-end; margin-top:24px">
+        <button class="btn btn-secondary" id="closeModalBtn">Cancel</button>
+        <button class="btn btn-primary">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Enhanced theme toggle with persistence
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const overlay = document.getElementById('overlay');
+  const closeBtn = document.getElementById('closeModalBtn');
+  
+  // Updated color hex values for both themes
+  const colorValues = {
+    light: {
+      primary: '#2D6356',
+      secondary: '#32517A', 
+      accent: '#96364C',
+      soft: '#CDD3CE',
+      surface: '#FAFAFA',
+      white: '#FFFFFF'
+    },
+    dark: {
+      primary: '#3B7F71',
+      secondary: '#1E3A8A',
+      accent: '#A8556B', 
+      soft: '#374151',
+      surface: '#0F1419',
+      white: '#1F2937'
+    }
+  };
+  
+  // Check for saved theme preference or default to system preference
+  const savedTheme = localStorage.getItem('theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  
+  function updateHexValues(theme) {
+    const values = colorValues[theme];
+    document.getElementById('primary-hex').textContent = values.primary;
+    document.getElementById('secondary-hex').textContent = values.secondary;
+    document.getElementById('accent-hex').textContent = values.accent;
+    document.getElementById('soft-hex').textContent = values.soft;
+    document.getElementById('surface-hex').textContent = values.surface;
+    document.getElementById('white-hex').textContent = values.white;
+  }
+  
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.innerHTML = '☀️ Light';
+    } else {
+      body.removeAttribute('data-theme');
+      themeToggle.innerHTML = '🌙 Dark';
+    }
+    updateHexValues(theme);
+    localStorage.setItem('theme', theme);
+  }
+  
+  // Initialize theme
+  setTheme(savedTheme);
+  
+  // Theme toggle functionality
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+  
+  // Modal functionality
+  window.addEventListener('load', () => {
+    setTimeout(() => overlay.classList.add('open'), 1000);
+  });
+  
+  closeBtn?.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay?.addEventListener('click', (e) => { 
+    if(e.target === overlay) overlay.classList.remove('open') 
+  });
+  
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+</script>
+</body>
+</html>

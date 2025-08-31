@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1111)"><rect width="1000" height="1000" fill="#2d6356"></rect><g transform="matrix(1.0526315789473684,0,0,1.0526315789473684,91.5789473684211,50)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="776" height="855"><svg width="776" height="855" viewBox="0 0 776 855" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M761 294.183C742.864 219.315 676.969 117.88 527.648 94.9365C419.436 -81.367 243.515 75.0117 340.846 172.22C390.66 217.256 418.589 242.506 468.404 287.542C586.079 405.069 542.539 545.598 406.136 617.574M340.846 840V644.376C364.438 637.084 386.272 628.056 406.136 617.574M406.136 617.574V840M15 589.431C436.363 -78.3482 761 681.206 15 590.035M406.136 84.0684V84.6722" stroke="white" stroke-width="30" stroke-linecap="round"></path>
+</svg></svg></g></g><defs><clipPath id="SvgjsClipPath1111"><rect width="1000" height="1000" x="0" y="0" rx="350" ry="350"></rect></clipPath></defs></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(1.1695906432748537,0,0,1.1695906432748537,46.19883040935673,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="776" height="855"><svg width="776" height="855" viewBox="0 0 776 855" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M761 294.183C742.864 219.315 676.969 117.88 527.648 94.9365C419.436 -81.367 243.515 75.0117 340.846 172.22C390.66 217.256 418.589 242.506 468.404 287.542C586.079 405.069 542.539 545.598 406.136 617.574M340.846 840V644.376C364.438 637.084 386.272 628.056 406.136 617.574M406.136 617.574V840M15 589.431C436.363 -78.3482 761 681.206 15 590.035M406.136 84.0684V84.6722" stroke="white" stroke-width="30" stroke-linecap="round"></path>
+</svg></svg></g></g></svg></g></svg>
