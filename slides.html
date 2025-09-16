@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Tech for Rural Realities - Duncan Miller</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/slides.css">
+    <!--
+    Integration Instructions:
+    1. Replace images in /assets/ folder with your actual assets
+    2. Modify theme colors in css/slides.css under #rhc-slides :root
+    3. Link to this page from your main navigation as needed
+    4. All styles and scripts are scoped to avoid conflicts
+    -->
+</head>
+<body>
+    <div id="rhc-slides">
+        <!-- Progress indicator -->
+        <div class="progress-indicator">
+            <span class="slide-counter">Slide 1 / 9</span>
+        </div>
+
+        <!-- Main slides container -->
+        <main class="slides-container" role="main">
+            <!-- Slide 1 -->
+            <section class="slide active" data-slide="1" role="tabpanel" aria-label="Slide 1">
+                <div class="slide-content">
+                    <h1>Building Tech for Rural Realities: What Happens When a Clinician Codes with AI?</h1>
+                    <div class="presenter-info">
+                        <p class="presenter-name">Duncan Miller</p>
+                        <p class="qualifications">BSc Physiotherapy (UCT) | MPH (Imperial College London)</p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Welcome to my presentation on building technology for rural healthcare using AI-assisted coding.
+                </aside>
+            </section>
+
+            <!-- Slide 2 -->
+            <section class="slide" data-slide="2" role="tabpanel" aria-label="Slide 2">
+                <div class="slide-content">
+                    <h2>1-minute Demo (Definitions)</h2>
+                    <div class="two-column">
+                        <div class="column">
+                            <div class="definition-item">
+                                <span class="material-icons">palette</span>
+                                <div>
+                                    <strong>Front-end</strong> — the visible part of a website
+                                </div>
+                            </div>
+                            <div class="definition-item">
+                                <span class="material-icons">code</span>
+                                <div>
+                                    <strong>HTML</strong> — the structure and wording of a website
+                                </div>
+                            </div>
+                            <div class="definition-item">
+                                <span class="material-icons">style</span>
+                                <div>
+                                    <strong>CSS</strong> — the styling of a website
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="definition-item">
+                                <span class="material-icons">flash_on</span>
+                                <div>
+                                    <strong>JavaScript</strong> — the interactive actions of a website
+                                </div>
+                            </div>
+                            <div class="definition-item">
+                                <span class="material-icons">storage</span>
+                                <div>
+                                    <strong>Backend</strong> — the "brains" that handle logic, store data, and talk to the front-end
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Let's start with some basic definitions that will help everyone understand what we're talking about when we discuss web development.
+                </aside>
+            </section>
+
+            <!-- Slide 3 -->
+            <section class="slide" data-slide="3" role="tabpanel" aria-label="Slide 3">
+                <div class="slide-content">
+                    <h2>Coding for Non-Coders</h2>
+                    <div class="two-column">
+                        <div class="column">
+                            <h3>No-code tools</h3>
+                            <div class="tool-logos">
+                                <div class="logo-placeholder">
+                                    <img src="assets/glide.png" alt="Glide logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="placeholder-fallback">Glide Logo</div>
+                                </div>
+                                <div class="logo-placeholder">
+                                    <img src="assets/appsheet.png" alt="AppSheet logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="placeholder-fallback">AppSheet Logo</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h3>AI coding tools</h3>
+                            <div class="tool-logos">
+                                <div class="logo-placeholder">
+                                    <img src="assets/chatgpt.png" alt="ChatGPT logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="placeholder-fallback">ChatGPT Logo</div>
+                                </div>
+                                <div class="logo-placeholder">
+                                    <img src="assets/claude.png" alt="Claude Code logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="placeholder-fallback">Claude Code Logo</div>
+                                </div>
+                                <div class="logo-placeholder">
+                                    <img src="assets/gemini.png" alt="Gemini logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="placeholder-fallback">Gemini Logo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    There are two main approaches for non-coders to build applications: no-code tools and AI-assisted coding.
+                </aside>
+            </section>
+
+            <!-- Slide 4 -->
+            <section class="slide" data-slide="4" role="tabpanel" aria-label="Slide 4">
+                <div class="slide-content">
+                    <h2>24-hour Demo</h2>
+                    <div class="demo-content">
+                        <div class="qr-section">
+                            <div class="qr-placeholder">
+                                <img src="assets/Demo App.png" alt="QR code for referral system app" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="placeholder-fallback">QR Code<br>Referral App</div>
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <h3>What I used:</h3>
+                            <ul>
+                                <li>Gemini CLI to program</li>
+                                <li>TypeScript, React, and Next.js</li>
+                                <li>Google authentication</li>
+                                <li>Google Sheets</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Here's a practical example - I built a referral system in 24 hours using AI assistance.
+                </aside>
+            </section>
+
+            <!-- Slide 5 -->
+            <section class="slide" data-slide="5" role="tabpanel" aria-label="Slide 5">
+                <div class="slide-content">
+                    <h2>Back to the 1-minute Demo</h2>
+                    <p class="centered-text">Let's jump back to the 1-minute demo and see what the AI generated.</p>
+                </div>
+                <aside class="notes">
+                    Time to show the actual demo of AI-generated code.
+                </aside>
+            </section>
+
+            <!-- Slide 6 -->
+            <section class="slide" data-slide="6" role="tabpanel" aria-label="Slide 6">
+                <div class="slide-content">
+                    <h2>Practical AI-Assisted Coding Tips for Clinicians</h2>
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <span class="material-icons">design_services</span>
+                            <div>
+                                <strong>Planning</strong>
+                                <p>Start with clear requirements and user stories</p>
+                            </div>
+                        </div>
+                        <div class="tip-card">
+                            <span class="material-icons">build</span>
+                            <div>
+                                <strong>Incremental Development</strong>
+                                <p>Build and test features one at a time</p>
+                            </div>
+                        </div>
+                        <div class="tip-card">
+                            <span class="material-icons">layers</span>
+                            <div>
+                                <strong>Choosing the right stack</strong>
+                                <p>Pick familiar technologies that AI can help with</p>
+                            </div>
+                        </div>
+                        <div class="tip-card">
+                            <span class="material-icons">cloud_upload</span>
+                            <div>
+                                <strong>Deployment Simplicity</strong>
+                                <p>Use platforms that minimize infrastructure complexity</p>
+                            </div>
+                        </div>
+                        <div class="tip-card">
+                            <span class="material-icons">web</span>
+                            <div>
+                                <strong>Frontend Frameworks</strong>
+                                <p>Choose well-documented frameworks with good AI support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Here are the key strategies I've learned for successfully using AI to build healthcare technology.
+                </aside>
+            </section>
+
+            <!-- Slide 7 -->
+            <section class="slide" data-slide="7" role="tabpanel" aria-label="Slide 7">
+                <div class="slide-content">
+                    <h2>Barriers and Solutions</h2>
+                    <div class="barriers-table">
+                        <div class="table-header">
+                            <div class="header-cell">Barrier</div>
+                            <div class="header-cell">How to mitigate</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="cell">Buy-in</div>
+                            <div class="cell">Users need to see the benefit</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="cell">Connectivity</div>
+                            <div class="cell">Progressive Web Apps (PWA)</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="cell">Data Usage</div>
+                            <div class="cell">Quantify usage and communicate</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="cell">Computer literacy or confidence</div>
+                            <div class="cell">Cell-phone-based solutions</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="cell">Workflow</div>
+                            <div class="cell">Be as flexible as needed</div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Common barriers when implementing technology in rural healthcare settings and practical solutions.
+                </aside>
+            </section>
+
+            <!-- Slide 8 -->
+            <section class="slide" data-slide="8" role="tabpanel" aria-label="Slide 8">
+                <div class="slide-content">
+                    <h2>Data Protection Responsibility</h2>
+                    <ul class="simple-list">
+                        <li>Protection of Personal Information Act (POPIA)</li>
+                    </ul>
+                    <div class="callout">
+                        Data stewardship is a clinical responsibility.
+                    </div>
+                </div>
+                <aside class="notes">
+                    We must always consider data protection and privacy when building healthcare technology.
+                </aside>
+            </section>
+
+            <!-- Slide 9 -->
+            <section class="slide" data-slide="9" role="tabpanel" aria-label="Slide 9">
+                <div class="slide-content">
+                    <h2>Conclusion</h2>
+                    <div class="conclusion-grid">
+                        <div class="conclusion-card">
+                            <span class="material-icons">favorite</span>
+                            <div>
+                                <strong>Good systems support good care</strong>
+                                <p>Technology should enhance patient outcomes</p>
+                            </div>
+                        </div>
+                        <div class="conclusion-card">
+                            <span class="material-icons">local_hospital</span>
+                            <div>
+                                <strong>Clinicians know what is needed</strong>
+                                <p>Healthcare professionals understand the real problems</p>
+                            </div>
+                        </div>
+                        <div class="conclusion-card">
+                            <span class="material-icons">psychology</span>
+                            <div>
+                                <strong>AI is an amazing tool we should utilise</strong>
+                                <p>Artificial intelligence makes development accessible to clinicians</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    To wrap up: technology should enhance clinical care, and AI makes it accessible to clinicians.
+                </aside>
+            </section>
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="slide-footer">
+            <span>Duncan Miller — RHC 2025</span>
+        </footer>
+
+        <!-- Help overlay -->
+        <div class="help-overlay" role="dialog" aria-labelledby="help-title" aria-hidden="true">
+            <div class="help-content">
+                <h3 id="help-title">Keyboard Shortcuts</h3>
+                <div class="help-shortcuts">
+                    <div class="shortcut">
+                        <kbd>←</kbd> <kbd>→</kbd> <span>Navigate slides</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>A</kbd> <kbd>D</kbd> <span>Navigate slides (alt)</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>F</kbd> <span>Fullscreen toggle</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>G</kbd> <span>Go to slide</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>N</kbd> <span>Toggle notes</span>
+                    </div>
+                    <div class="shortcut">
+                        <kbd>?</kbd> <span>Show/hide help</span>
+                    </div>
+                </div>
+                <button class="close-help" aria-label="Close help">×</button>
+            </div>
+        </div>
+
+        <!-- Go to slide modal -->
+        <div class="goto-modal" role="dialog" aria-labelledby="goto-title" aria-hidden="true">
+            <div class="goto-content">
+                <h3 id="goto-title">Go to Slide</h3>
+                <input type="number" class="goto-input" min="1" max="9" placeholder="1-9" aria-label="Slide number">
+                <div class="goto-buttons">
+                    <button class="goto-go">Go</button>
+                    <button class="goto-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/slides.js"></script>
+</body>
+</html>
