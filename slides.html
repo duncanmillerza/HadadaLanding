@@ -215,30 +215,70 @@
             <section class="slide" data-slide="7" role="tabpanel" aria-label="Slide 7">
                 <div class="slide-content">
                     <h2>Barriers and Solutions</h2>
-                    <div class="barriers-table">
-                        <div class="table-header">
-                            <div class="header-cell">Barrier</div>
-                            <div class="header-cell">How to mitigate</div>
+                    <div class="barriers-solutions">
+                        <div class="barrier-row" data-delay="0">
+                            <div class="barrier-side">
+                                <div class="barrier-icon">
+                                    <span class="material-icons">group</span>
+                                </div>
+                                <strong>Buy-in</strong>
+                            </div>
+                            <div class="solution-side">
+                                <div class="solution-pill">Users need to see the benefit</div>
+                            </div>
+                            <div class="example-text">Ordering wheelchairs worked because clinicians got what patients needed; logging 'issued' had no direct benefit.</div>
                         </div>
-                        <div class="table-row">
-                            <div class="cell">Buy-in</div>
-                            <div class="cell">Users need to see the benefit</div>
+
+                        <div class="barrier-row" data-delay="1">
+                            <div class="barrier-side">
+                                <div class="barrier-icon">
+                                    <span class="material-icons">signal_wifi_off</span>
+                                </div>
+                                <strong>Connectivity</strong>
+                            </div>
+                            <div class="solution-side">
+                                <div class="solution-pill">Progressive Web Apps (PWA)</div>
+                            </div>
+                            <div class="example-text">We download clinic patient notes to the phone; clinicians can work offline and sync later.</div>
                         </div>
-                        <div class="table-row">
-                            <div class="cell">Connectivity</div>
-                            <div class="cell">Progressive Web Apps (PWA)</div>
+
+                        <div class="barrier-row" data-delay="2">
+                            <div class="barrier-side">
+                                <div class="barrier-icon">
+                                    <span class="material-icons">data_usage</span>
+                                </div>
+                                <strong>Data Usage</strong>
+                            </div>
+                            <div class="solution-side">
+                                <div class="solution-pill">Quantify usage and communicate</div>
+                            </div>
+                            <div class="example-text">A wheelchair order is a few KB; the PDF you printed to attend this meeting was MBs.</div>
                         </div>
-                        <div class="table-row">
-                            <div class="cell">Data Usage</div>
-                            <div class="cell">Quantify usage and communicate</div>
+
+                        <div class="barrier-row" data-delay="3">
+                            <div class="barrier-side">
+                                <div class="barrier-icon">
+                                    <span class="material-icons">smartphone</span>
+                                </div>
+                                <strong>Computer literacy or confidence</strong>
+                            </div>
+                            <div class="solution-side">
+                                <div class="solution-pill">Cell-phone-based solutions</div>
+                            </div>
+                            <div class="example-text">Design for phones first — staff use them daily even if computer skills are limited.</div>
                         </div>
-                        <div class="table-row">
-                            <div class="cell">Computer literacy or confidence</div>
-                            <div class="cell">Cell-phone-based solutions</div>
-                        </div>
-                        <div class="table-row">
-                            <div class="cell">Workflow</div>
-                            <div class="cell">Be as flexible as needed</div>
+
+                        <div class="barrier-row" data-delay="4">
+                            <div class="barrier-side">
+                                <div class="barrier-icon">
+                                    <span class="material-icons">alt_route</span>
+                                </div>
+                                <strong>Workflow</strong>
+                            </div>
+                            <div class="solution-side">
+                                <div class="solution-pill">Be as flexible as needed</div>
+                            </div>
+                            <div class="example-text">Allow SOAP or a big free-text box; speech-to-text works better for some clinicians.</div>
                         </div>
                     </div>
                 </div>
@@ -250,12 +290,23 @@
             <!-- Slide 8 -->
             <section class="slide" data-slide="8" role="tabpanel" aria-label="Slide 8">
                 <div class="slide-content">
-                    <h2>Data Protection Responsibility</h2>
-                    <ul class="simple-list">
-                        <li>Protection of Personal Information Act (POPIA)</li>
-                    </ul>
-                    <div class="callout">
-                        Data stewardship is a clinical responsibility.
+                    <div class="slide-8-header">
+                        <svg class="security-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Security shield icon">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" fill="currentColor"/>
+                        </svg>
+                        <h2>Data Protection Responsibility</h2>
+                    </div>
+
+                    <div class="popia-section">
+                        <div class="popia-badge">POPIA</div>
+                        <div class="popia-subtitle">Protection of Personal Information Act</div>
+                    </div>
+
+                    <div class="ethics-bar">
+                        <svg class="ethics-shield" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Shield icon">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" fill="currentColor"/>
+                        </svg>
+                        <span>Data stewardship is a clinical responsibility.</span>
                     </div>
                 </div>
                 <aside class="notes">
