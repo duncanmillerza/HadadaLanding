@@ -41,46 +41,39 @@
             <!-- Slide 2 -->
             <section class="slide" data-slide="2" role="tabpanel" aria-label="Slide 2">
                 <div class="slide-content">
-                    <h2>1-minute Demo (Definitions)</h2>
-                    <div class="two-column">
-                        <div class="column">
-                            <div class="definition-item">
-                                <span class="material-icons">palette</span>
-                                <div>
-                                    <strong>Front-end</strong> — the visible part of a website
-                                </div>
+                    <h2>1 minute AI Demo</h2>
+                    <div class="gemini-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-controls">
+                                <span class="control close"></span>
+                                <span class="control minimize"></span>
+                                <span class="control maximize"></span>
                             </div>
-                            <div class="definition-item">
-                                <span class="material-icons">code</span>
-                                <div>
-                                    <strong>HTML</strong> — the structure and wording of a website
-                                </div>
-                            </div>
-                            <div class="definition-item">
-                                <span class="material-icons">style</span>
-                                <div>
-                                    <strong>CSS</strong> — the styling of a website
-                                </div>
+                            <div class="terminal-title">
+                                <img src="assets/gemini.png" alt="Gemini logo" class="gemini-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                                <span class="logo-fallback" style="display:none;">⚡</span>
+                                <span>Gemini CLI</span>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="definition-item">
-                                <span class="material-icons">flash_on</span>
-                                <div>
-                                    <strong>JavaScript</strong> — the interactive actions of a website
-                                </div>
+                        <div class="terminal-body">
+                            <div class="prompt-line">
+                                <span class="prompt">duncan@hadadahealth.com:~$</span>
+                                <span class="cursor">|</span>
                             </div>
-                            <div class="definition-item">
-                                <span class="material-icons">storage</span>
-                                <div>
-                                    <strong>Backend</strong> — the "brains" that handle logic, store data, and talk to the front-end
+                            <div class="command-output">
+                                <div class="prompt-text">
+                                    <strong>Prompt:</strong> Please create the front-end for a simple equipment and assistive device tracking app. This application will allow clinicians to issue wheelchairs and crutches and walking frames and any other assistive devices, as well as return them and include putting people on a waiting list if there is no wheelchair. This app will allow clinicians to keep track of all issues, returns, and orders.
+                                </div>
+                                <br>
+                                <div class="requirements-text">
+                                    There needs to be a form of login, but for now, for this demo purpose, that is not necessary. I will eventually use a Superbase backend, but for now, please create an HTML, CSS, and JavaScript front-end for me to try out.
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <aside class="notes">
-                    Let's start with some basic definitions that will help everyone understand what we're talking about when we discuss web development.
+                    This is the actual prompt I'll be giving to Gemini CLI to generate our equipment tracking application.
                 </aside>
             </section>
 

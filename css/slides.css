@@ -944,3 +944,141 @@ Theme Customization Instructions:
     padding: 1.25rem 1rem;
   }
 }
+
+/* Slide 2 - Gemini CLI Terminal */
+#rhc-slides .slide[data-slide="2"] .gemini-terminal {
+  background: #1a1a1a;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  margin-top: 2rem;
+  animation: fadeInSlide 0.4s ease-out;
+}
+
+#rhc-slides .slide[data-slide="2"] .terminal-header {
+  background: #2d2d2d;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #404040;
+}
+
+#rhc-slides .slide[data-slide="2"] .terminal-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#rhc-slides .slide[data-slide="2"] .control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+#rhc-slides .slide[data-slide="2"] .control.close {
+  background: #ff5f56;
+}
+
+#rhc-slides .slide[data-slide="2"] .control.minimize {
+  background: #ffbd2e;
+}
+
+#rhc-slides .slide[data-slide="2"] .control.maximize {
+  background: #27ca3f;
+}
+
+#rhc-slides .slide[data-slide="2"] .terminal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+#rhc-slides .slide[data-slide="2"] .gemini-logo {
+  width: 20px;
+  height: 20px;
+  filter: brightness(1.2);
+}
+
+#rhc-slides .slide[data-slide="2"] .logo-fallback {
+  font-size: 16px;
+  color: #4285f4;
+}
+
+#rhc-slides .slide[data-slide="2"] .terminal-body {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  color: #00ff00;
+  line-height: 1.6;
+}
+
+#rhc-slides .slide[data-slide="2"] .prompt-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#rhc-slides .slide[data-slide="2"] .prompt {
+  color: #4285f4;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+#rhc-slides .slide[data-slide="2"] .cursor {
+  color: #00ff00;
+  animation: blink 1s infinite;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+#rhc-slides .slide[data-slide="2"] .command-output {
+  color: #e6e6e6;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+#rhc-slides .slide[data-slide="2"] .prompt-text {
+  margin-bottom: 0.75rem;
+}
+
+#rhc-slides .slide[data-slide="2"] .prompt-text strong {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+#rhc-slides .slide[data-slide="2"] .requirements-text {
+  color: #b3b3b3;
+  font-style: italic;
+}
+
+/* Slide 2 responsive design */
+@media (max-width: 768px) {
+  #rhc-slides .slide[data-slide="2"] .terminal-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  #rhc-slides .slide[data-slide="2"] .terminal-title {
+    font-size: 0.75rem;
+  }
+
+  #rhc-slides .slide[data-slide="2"] .gemini-logo {
+    width: 16px;
+    height: 16px;
+  }
+
+  #rhc-slides .slide[data-slide="2"] .terminal-body {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+
+  #rhc-slides .slide[data-slide="2"] .command-output {
+    font-size: 0.75rem;
+  }
+}
